@@ -11,9 +11,12 @@ export class ProductsComponent implements OnInit {
   products = Products;
   
   searchProducts(value:string):void {
+    if(!value){
+      this.products = Products;
+      return ;
+    }
     this.products =Products.filter(p=> 
        p.name.includes(value) || p.id.toString()==value || p.price.toString() == value);
-    console.log(this.products);
     }
 
   constructor() { }
